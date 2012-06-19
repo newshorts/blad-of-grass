@@ -1,0 +1,39 @@
+<!-- 
+    Author: Mike Newell © 2012
+-->
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/reset.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <script src="js/video.js"></script>
+        <script>
+            (function($) {
+                $(window).load(function() {
+                    
+                    var video = new Video();
+                    video.init();
+
+                });
+            })(jQuery);
+        </script>
+    </head>
+    <body>
+        <div id="wrap" class="retina">
+            <video class="retina" id="phase1" width="2048" height="1536">
+                <source src="video/grass.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
+                <source src="video/grass.ogv" type="video/ogg" />
+                <source src="video/grass.webm" type='video/webm; codecs="vp8, vorbis"' />
+                Your browser does not support the video tag.
+            </video>
+            <div  class="retina" id="overlay"></div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+/* 
+    Document   : style
+    Created on : Jun 18, 2012, 3:01:37 PM
+    Author     : mike_newell
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root { 
+    display: block;
+}
+
+.retina {
+    width: 2048px;
+    height: 1536px;
+}
+
+#wrap {
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#video {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
