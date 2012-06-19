@@ -36,3 +36,27 @@ root {
     left: 0;
     z-index: 5;
 }
+
+.clicker {
+    position: absolute;
+    z-index: 6;
+    width: 200px;
+    height: 200px;
+/*    background-color: red;*/
+    display: none;
+}
+
+#clicker1 {
+    top: 884px;
+    left: 1590px;
+}
+
+#clicker2 {
+    top: 783px;
+    left: 1354px;
+}
+
+#clicker3 {
+    top: 872px;
+    left: 1449px;
+}

@@ -16,15 +16,12 @@ var Video = function(parent, id, dimensions, files, isLoop) {
     var _parent = parent,
         _dimensions = dimensions,
         _files = files,
-        _isLoop = isLoop || false,
         _video,
         _id = id;
         
     this.create = function() {
         
-        var loop = (_isLoop) ? '' : '';
-        
-        var html =  '<video class="retina video" id="'+_id+'" width="'+_dimensions.width+'" height="'+_dimensions.height+'" '+loop+'>';
+        var html =  '<video class="retina video" id="'+_id+'" width="'+_dimensions.width+'" height="'+_dimensions.height+'">';
             for(var i = 0; i < _files.length; i++) {
                 html += '<source src="'+_files[i].path+'" type="'+_files[i].mime+'" />';
             }
@@ -35,37 +32,14 @@ var Video = function(parent, id, dimensions, files, isLoop) {
         
         _video = $('#' + _id);
         
-        if(_isLoop) {
-            _video[0].addEventListener('timeupdate', updateTime, false);
-        }
-        
-    }
-    
-    var updateTime = function() {
-        console.log(_video[0].currentTime);
-//        console.log(_video[0].duration);
-        if(_video[0].currentTime === _video[0].duration) {
-//            _video[0].pause();
-            _video[0].currentTime = 0.1;
-            _video[0].play();
-        }
-    }
-    
-    this.loop = function() {
-        _video.css({
-            opacity: 1,
-            'z-index': 5
-        });
-        
-//        console.log(_video[0].currentTime);
-        
-        _video[0].play();
-        
     }
     
     this.play = function() {
         console.log('playing ' + _id);
-        
+        _video.css({
+            opacity: 1,
+            'z-index': 5
+        });
         return _video[0].play();
         
     }

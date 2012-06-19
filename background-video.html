@@ -45,54 +45,69 @@ and open the template in the editor.
                         mime: 'video/webm'
                     }];
                 
-                    var loop1Files = [{
-                        path: 'video/loop1/loop1.mp4',
+                    var phase3Files = [{
+                        path: 'video/phase3/phase3.mp4',
                         mime: 'video/mp4'
                     }, {
-                        path: 'video/loop1/loop1.ogv',
+                        path: 'video/phase3/phase3.ogv',
                         mime: 'video/ogg'
                     }, {
-                        path: 'video/loop1/loop1.webm',
-                        mime: 'video/webm'
-                    }];
-                    
-                    var loop2Files = [{
-                        path: 'video/loop2/loop2.mp4',
-                        mime: 'video/mp4'
-                    }, {
-                        path: 'video/loop2/loop2.ogv',
-                        mime: 'video/ogg'
-                    }, {
-                        path: 'video/loop2/loop2.webm',
+                        path: 'video/phase3/phase3.webm',
                         mime: 'video/webm'
                     }];
                 
+                    var phase4Files = [{
+                        path: 'video/phase4/phase4.mp4',
+                        mime: 'video/mp4'
+                    }, {
+                        path: 'video/phase4/phase4.ogv',
+                        mime: 'video/ogg'
+                    }, {
+                        path: 'video/phase4/phase4.webm',
+                        mime: 'video/webm'
+                    }];
                     
                     var phase1 = new Video($('#wrap'), 'phase1', dimensions, phase1Files);
                     var phase2 = new Video($('#wrap'), 'phase2', dimensions, phase2Files);
-                    var loop1 = new Video($('#wrap'), 'loop1', dimensions, loop1Files, true);
-                    var loop2 = new Video($('#wrap'), 'loop2', dimensions, loop2Files, true);
+                    var phase3 = new Video($('#wrap'), 'phase3', dimensions, phase3Files);
+                    var phase4 = new Video($('#wrap'), 'phase4', dimensions, phase4Files);
+                    
                     
                     phase1.create();
                     phase2.create();
-                    loop1.create();
-                    loop2.create();
+                    phase3.create();
+                    phase4.create();
                     
                     var p1 = phase1.getVideo();
+                    var p2 = phase2.getVideo();
+                    var p3 = phase3.getVideo();
+                    var p4 = phase4.getVideo();
                     
                     // timing and events
                     $('#overlay').on('click', function(evt) {
-                        p1.css({
-                            opacity: 1,
-                            'z-index': 5
-                        });
-                        console.dir(phase1);
+                        $(this).hide();
                         phase1.play();
+                        $('#clicker1').show();
                     });
                     
-                    p1.on('ended', function(evt) {
+                    $('#clicker1').on('click', function(evt) {
+                        $(this).hide();
                         phase1.pause();
-                        loop1.loop();
+                        phase2.play();
+                        $('#clicker2').show();
+                    });
+                    
+                    $('#clicker2').on('click', function(evt) {
+                        $(this).hide();
+                        phase2.pause();
+                        phase3.play();
+                        $('#clicker3').show();
+                    });
+                    
+                    $('#clicker3').on('click', function(evt) {
+                        $(this).hide();
+                        phase3.pause();
+                        phase4.play();
                     });
                     
                 });
@@ -101,6 +116,9 @@ and open the template in the editor.
     </head>
     <body>
         <div id="wrap" class="retina">
+            <div id="clicker3" class="clicker"></div>
+            <div id="clicker2" class="clicker"></div>
+            <div id="clicker1" class="clicker"></div>
             <div  class="retina" id="overlay"></div>
         </div>
     </body>
