@@ -6,10 +6,17 @@ To change this template, choose Tools | Templates
 and open the template in the editor.
 -->
 <!DOCTYPE html>
-<html>
+<!--<html manifest="cache.manifest">-->
+<html>    
     <head>
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        
+<!--        <meta name="viewport" content="width=device-width,initial-scale=1">	
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-touch-fullscreen" content="yes" />-->
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <link rel="stylesheet" type="text/css" href="css/reset.css" />
         <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -84,30 +91,42 @@ and open the template in the editor.
                     var p4 = phase4.getVideo();
                     
                     // timing and events
-                    $('#overlay').on('touchend', function(evt) {
+                    $('#overlay').on('touchstart click', function(evt) {
                         $(this).hide();
                         phase1.play();
                         $('#clicker1').show();
                     });
                     
-                    $('#clicker1').on('touchend', function(evt) {
+                    $('#clicker1').on('touchend click', function(evt) {
                         $(this).hide();
                         phase1.pause();
                         phase2.play();
                         $('#clicker2').show();
                     });
                     
-                    $('#clicker2').on('touchend', function(evt) {
+                    $('#clicker2').on('touchend click', function(evt) {
                         $(this).hide();
                         phase2.pause();
                         phase3.play();
                         $('#clicker3').show();
                     });
                     
-                    $('#clicker3').on('touchend', function(evt) {
+                    $('#clicker3').on('touchend click', function(evt) {
                         $(this).hide();
                         phase3.pause();
                         phase4.play();
+                    });
+                    
+                    $(p4[0]).on('ended', function(evt) {
+                        
+                        setTimeout(function() {
+                            var r = confirm('Restart?');
+                        
+                            if(r == true) {
+                                $('#overlay').show();;
+                            }
+                        }, 5000);
+                        
                     });
                     
                 });

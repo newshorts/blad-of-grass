@@ -32,6 +32,39 @@ var Video = function(parent, id, dimensions, files, isLoop) {
         
         _video = $('#' + _id);
         
+//        var appCache = window.applicationCache;
+//        
+//        function handleCacheEvent(evt) {
+//            alert('downloading:' + evt)
+//        }
+        
+//        // Fired after the first cache of the manifest.
+//        appCache.addEventListener('cached', alert('Fired after the first cache of the manifest.'), false);
+//
+//        // Checking for an update. Always the first event fired in the sequence.
+//        appCache.addEventListener('checking', alert('Checking for an update. Always the first event fired in the sequence.'), false);
+//
+//        // An update was found. The browser is fetching resources.
+//        appCache.addEventListener('downloading', handleCacheEvent, false);
+
+        // The manifest returns 404 or 410, the download failed,
+        // or the manifest changed while the download was in progress.
+//        appCache.addEventListener('error', alert('The manifest returns 404 or 410, the download failed,'), false);
+
+//        // Fired after the first download of the manifest.
+//        appCache.addEventListener('noupdate', alert('manifest not chagned.'), false);
+//
+//        // Fired if the manifest file returns a 404 or 410.
+//        // This results in the application cache being deleted.
+//        appCache.addEventListener('obsolete', alert('This results in the application cache being deleted'), false);
+//
+//        // Fired for each resource listed in the manifest as it is being fetched.
+//        appCache.addEventListener('progress', alert('Fired for each resource listed in the manifest as it is being fetched.'), false);
+//
+//        // Fired when the manifest resources have been newly redownloaded.
+//        appCache.addEventListener('updateready', alert('Fired when the manifest resources have been newly redownloaded.'), false);
+        
+        
     }
     
     this.play = function() {
