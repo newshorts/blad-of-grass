@@ -18,21 +18,89 @@ and open the template in the editor.
             (function($) {
                 $(window).load(function() {
                     
-                    var video = new Video();
-                    video.init();
-
+                    var dimensions = {
+                        width: 2048,
+                        height: 1536
+                    };
+                    
+                    var phase1Files = [{
+                        path: 'video/phase1/phase1.mp4',
+                        mime: 'video/mp4'
+                    }, {
+                        path: 'video/phase1/phase1.ogv',
+                        mime: 'video/ogg'
+                    }, {
+                        path: 'video/phase1/phase1.webm',
+                        mime: 'video/webm'
+                    }];
+                    
+                    var phase2Files = [{
+                        path: 'video/phase2/phase2.mp4',
+                        mime: 'video/mp4'
+                    }, {
+                        path: 'video/phase2/phase2.ogv',
+                        mime: 'video/ogg'
+                    }, {
+                        path: 'video/phase2/phase2.webm',
+                        mime: 'video/webm'
+                    }];
+                
+                    var loop1Files = [{
+                        path: 'video/loop1/loop1.mp4',
+                        mime: 'video/mp4'
+                    }, {
+                        path: 'video/loop1/loop1.ogv',
+                        mime: 'video/ogg'
+                    }, {
+                        path: 'video/loop1/loop1.webm',
+                        mime: 'video/webm'
+                    }];
+                    
+                    var loop2Files = [{
+                        path: 'video/loop2/loop2.mp4',
+                        mime: 'video/mp4'
+                    }, {
+                        path: 'video/loop2/loop2.ogv',
+                        mime: 'video/ogg'
+                    }, {
+                        path: 'video/loop2/loop2.webm',
+                        mime: 'video/webm'
+                    }];
+                
+                    
+                    var phase1 = new Video($('#wrap'), 'phase1', dimensions, phase1Files);
+                    var phase2 = new Video($('#wrap'), 'phase2', dimensions, phase2Files);
+                    var loop1 = new Video($('#wrap'), 'loop1', dimensions, loop1Files, true);
+                    var loop2 = new Video($('#wrap'), 'loop2', dimensions, loop2Files, true);
+                    
+                    phase1.create();
+                    phase2.create();
+                    loop1.create();
+                    loop2.create();
+                    
+                    var p1 = phase1.getVideo();
+                    
+                    // timing and events
+                    $('#overlay').on('click', function(evt) {
+                        p1.css({
+                            opacity: 1,
+                            'z-index': 5
+                        });
+                        console.dir(phase1);
+                        phase1.play();
+                    });
+                    
+                    p1.on('ended', function(evt) {
+                        phase1.pause();
+                        loop1.loop();
+                    });
+                    
                 });
             })(jQuery);
         </script>
     </head>
     <body>
         <div id="wrap" class="retina">
-            <video class="retina" id="phase1" width="2048" height="1536">
-                <source src="video/grass.mp4" type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"' />
-                <source src="video/grass.ogv" type="video/ogg" />
-                <source src="video/grass.webm" type='video/webm; codecs="vp8, vorbis"' />
-                Your browser does not support the video tag.
-            </video>
             <div  class="retina" id="overlay"></div>
         </div>
     </body>
